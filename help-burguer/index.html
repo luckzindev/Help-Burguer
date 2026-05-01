@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Burguer – Jabaquara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ══ TOAST ══════════════════════════════════════════ -->
+<div class="toast" id="toast">🍔 Item adicionado ao carrinho!</div>
+
+<!-- ══ NAV ═══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="img/logo.jpeg" alt="Help Burguer Logo" />
+      Help<span>Burguer</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#info">Informações</a></li>
+    </ul>
+    <button class="nav-cart-btn" onclick="openCart()">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      Carrinho
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<div id="hero-wrapper">
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-tag" id="statusTag">⏳ Verificando horário...</div>
+    <h1 class="hero-title">O burguer<br>que vai te<br><em>salvar</em>.</h1>
+    <p class="hero-desc">Hambúrgueres artesanais feitos com ingredientes selecionados, no coração do Jabaquara. Monte seu pedido e receba na sua porta.</p>
+    <div class="hero-actions">
+      <a href="#cardapio" class="btn-main">Ver Cardápio</a>
+      <a href="#info" class="btn-ghost">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Horários
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-num">3</div>
+        <div class="hero-meta-label">anos de sabor</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-num">30+</div>
+        <div class="hero-meta-label">opções no cardápio</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-num">5★</div>
+        <div class="hero-meta-label">avaliação média</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img-wrap">
+    <div class="hero-img-circle"></div>
+    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=85" alt="Help Burguer" />
+    <div class="hero-badge">
+      <div class="badge-icon">🛵</div>
+      <div class="badge-text">
+        <strong>Delivery disponível</strong>
+        <span>Jabaquara e região</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══ CARDÁPIO ═══════════════════════════════════════ -->
+<section id="cardapio">
+  <div class="section-wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Cardápio</p>
+      <h2 class="section-title">Escolha o seu</h2>
+      <p class="section-sub">Todos os burguers são feitos na hora, com pão artesanal e carne 100% bovina.</p>
+    </div>
+
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="filterCat('burgers', this)">🍔 Hamburguers</button>
+      <button class="cat-tab" onclick="filterCat('smash', this)">🔥 Smash</button>
+      <button class="cat-tab" onclick="filterCat('porcoes', this)">🍟 Porções</button>
+      <button class="cat-tab" onclick="filterCat('combos', this)">🎁 Combos</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+
+      <!-- HAMBURGUERS -->
+      <div class="menu-category active" id="cat-burgers">
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Burguer Help" />
+            <span class="menu-card-badge">Mais Pedido</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Burguer Help</div>
+            <div class="menu-card-desc">Carne 120g, queijo cheddar e maionese verde.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 15,90</div>
+              <button class="add-btn" onclick="addToCart('Burguer Help', 15.90, 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&q=80" alt="Salada Burguer" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Salada Burguer</div>
+            <div class="menu-card-desc">Carne 120g, queijo cheddar, alface, tomate, cebola roxa e maionese verde.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 17,90</div>
+              <button class="add-btn" onclick="addToCart('Salada Burguer', 17.90, 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" alt="Help Bacon" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Help Bacon</div>
+            <div class="menu-card-desc">Carne 120g, queijo cheddar, bacon e maionese verde.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 19,90</div>
+              <button class="add-btn" onclick="addToCart('Help Bacon', 19.90, 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=600&q=80" alt="Eggstreme" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Eggstreme</div>
+            <div class="menu-card-desc">Carne 120g, queijo cheddar, ovo, alface, tomate, cebola roxa e maionese verde.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 19,90</div>
+              <button class="add-btn" onclick="addToCart('Eggstreme', 19.90, 'https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=600&q=80" alt="Royal Burguer" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Royal Burguer</div>
+            <div class="menu-card-desc">Carne 120g, queijo cheddar, onion ring e molho barbecue.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 21,90</div>
+              <button class="add-btn" onclick="addToCart('Royal Burguer', 21.90, 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1550317138-10000687a72b?w=600&q=80" alt="Nobre Burguer" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Nobre Burguer</div>
+            <div class="menu-card-desc">Carne 120g, queijo cheddar, ovo, batata frita, alface, tomate, cebola roxa e maionese verde.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 22,90</div>
+              <button class="add-btn" onclick="addToCart('Nobre Burguer', 22.90, 'https://images.unsplash.com/photo-1550317138-10000687a72b?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Cheddar Bacon" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Cheddar Bacon</div>
+            <div class="menu-card-desc">Carne 120g, cheddar cremoso, bacon e molho barbecue.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 22,90</div>
+              <button class="add-btn" onclick="addToCart('Cheddar Bacon', 22.90, 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&q=80" alt="Triplo Help" />
+            <span class="menu-card-badge">Especial</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Triplo Help</div>
+            <div class="menu-card-desc">3 carnes 120g, queijo cheddar e maionese verde.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 25,90</div>
+              <button class="add-btn" onclick="addToCart('Triplo Help', 25.90, 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" alt="Help Monster" />
+            <span class="menu-card-badge">O Maior!</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Help Monster</div>
+            <div class="menu-card-desc">2 carnes 120g, queijo cheddar, ovo, bacon, batata frita, alface, tomate, cebola roxa e molho especial.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 29,90</div>
+              <button class="add-btn" onclick="addToCart('Help Monster', 29.90, 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMASH -->
+      <div class="menu-category" id="cat-smash">
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=600&q=80" alt="Smash 2.0" />
+            <span class="menu-card-badge">Novo</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Smash 2.0</div>
+            <div class="menu-card-desc">2 smash de carne, queijo cheddar, cebola roxa e molho barbecue.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 18,90</div>
+              <button class="add-btn" onclick="addToCart('Smash 2.0', 18.90, 'https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=600&q=80" alt="Smash 4.0" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Smash 4.0</div>
+            <div class="menu-card-desc">4 smash de carne, queijo cheddar, cebola roxa e molho barbecue.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 24,90</div>
+              <button class="add-btn" onclick="addToCart('Smash 4.0', 24.90, 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORÇÕES -->
+      <div class="menu-category" id="cat-porcoes">
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=80" alt="Batata P" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Batata P</div>
+            <div class="menu-card-desc">Batata frita crocante.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 6,90</div>
+              <button class="add-btn" onclick="addToCart('Batata P', 6.90, 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="img/batata-cheddar.png" alt="Batata M" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Batata M</div>
+            <div class="menu-card-desc">Batata frita, cheddar e bacon.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 12,90</div>
+              <button class="add-btn" onclick="addToCart('Batata M', 12.90, 'img/batata-cheddar.png')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="img/batata-cheddar.png" alt="Batata G" />
+            <span class="menu-card-badge">Favorita</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Batata G</div>
+            <div class="menu-card-desc">Batata frita, cheddar e bacon.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 25,90</div>
+              <button class="add-btn" onclick="addToCart('Batata G', 25.90, 'img/batata-cheddar.png')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="img/onion-ring.png" alt="Onion Ring" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Onion Ring</div>
+            <div class="menu-card-desc">Cebola empanada e crocante.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 13,90</div>
+              <button class="add-btn" onclick="addToCart('Onion Ring', 13.90, 'img/onion-ring.png')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="img/combo-double.jpeg" alt="Porção N°1" />
+            <span class="menu-card-badge">Melhor Valor</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Porção N°1</div>
+            <div class="menu-card-desc">Batata frita, cheddar, bacon, onion ring e nuggets de frango.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 33,90</div>
+              <button class="add-btn" onclick="addToCart('Porção N°1', 33.90, 'img/combo-double.jpeg')">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMBOS -->
+      <div class="menu-category" id="cat-combos">
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="img/salada-duplo.png" alt="Salada Duplo" />
+            <span class="menu-card-badge">🔥 Promoção</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Salada Duplo</div>
+            <div class="menu-card-desc">Salada Burguer com duas carnes, acompanha batata frita, onion ring e refrigerante 350ml.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 39,90</div>
+              <button class="add-btn" onclick="addToCart('Salada Duplo', 39.90, 'img/salada-duplo.png')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="https://images.unsplash.com/photo-1561758033-7e924f619b47?w=600&q=80" alt="Combo Bacon" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Combo Bacon</div>
+            <div class="menu-card-desc">1 Help Bacon, batata frita e 1 refrigerante lata.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 29,90</div>
+              <button class="add-btn" onclick="addToCart('Combo Bacon', 29.90, 'https://images.unsplash.com/photo-1561758033-7e924f619b47?w=200&q=60')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="img/combo-double.jpeg" alt="Combo Casal" />
+            <span class="menu-card-badge">Melhor Valor</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Combo Casal</div>
+            <div class="menu-card-desc">2 Salada Burguer, batata cheddar e bacon e onion ring.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 60,90</div>
+              <button class="add-btn" onclick="addToCart('Combo Casal', 60.90, 'img/combo-double.jpeg')">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-img-wrap">
+            <img class="menu-card-img" src="img/combo-familia.jpeg" alt="Combo Família" />
+            <span class="menu-card-badge">Família</span>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">Combo Família</div>
+            <div class="menu-card-desc">2 Salada Burguer, 2 Help Bacon, batata cheddar e bacon, onion ring e nuggets de frango.</div>
+            <div class="menu-card-foot">
+              <div class="menu-card-price">R$ 99,90</div>
+              <button class="add-btn" onclick="addToCart('Combo Família', 99.90, 'img/combo-familia.jpeg')">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /menu-grid -->
+  </div>
+</section>
+
+<!-- ══ SOBRE ══════════════════════════════════════════ -->
+<section id="sobre">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <img class="about-img" src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=900&q=80" alt="Help Burguer cozinha" />
+      <div class="about-text">
+        <p class="section-eyebrow">Nossa história</p>
+        <h2 class="section-title">Feito com<br>amor e fogo.</h2>
+        <p>A Help Burguer nasceu no Jabaquara com um propósito simples: fazer o hambúrguer que a galera realmente queria comer. Sem firula, sem enrolação — só ingredientes de qualidade, pão fresquinho e muito capricho.</p>
+        <p>Cada burguer é montado na hora do pedido. A carne é temperada diariamente e o pão vem direto da panificadora parceira aqui do bairro.</p>
+        <div class="about-pills">
+          <span class="pill">🥩 Carne 100% bovina</span>
+          <span class="pill">🍞 Pão artesanal</span>
+          <span class="pill">🧅 Ingredientes frescos</span>
+          <span class="pill">🛵 Delivery rápido</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INFO ═══════════════════════════════════════════ -->
+<section id="info">
+  <div class="section-wrap">
+    <p class="section-eyebrow">Informações</p>
+    <h2 class="section-title">Como nos encontrar</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <h3>Endereço</h3>
+        <p>Rua Belford Duarte, 984<br>Jabaquara, São Paulo – SP<br>CEP 04375-000</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🕐</div>
+        <h3>Horário de Funcionamento</h3>
+        <p>Terça a Domingo<br><strong style="color:#fff;">19h00 – 00h00</strong><br><span style="color:#555;font-size:12px;">Segunda: Fechado</span></p>
+        <div class="open-pill" id="infoPill">⏳ Verificando...</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📞</div>
+        <h3>Contato</h3>
+        <p>
+          <a href="tel:+5511952060741">(11) 95206-0741</a><br>
+          <a href="https://wa.me/5511952060741" target="_blank" style="color:#25d366;">WhatsApp ↗</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo" style="display:flex;align-items:center;gap:10px;">
+      <img src="img/logo.jpeg" alt="Logo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid rgba(245,166,35,0.4);">
+      Help<span>Burguer</span>
+    </div>
+    <div class="footer-right">
+      Rua Belford Duarte, 984 · Jabaquara · SP<br>
+      © 2025 Help Burguer – Todos os direitos reservados
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CART SIDEBAR ═══════════════════════════════════ -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2>Seu Carrinho</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="empty-icon">🛒</div>
+      <p>Seu carrinho está vazio.<br>Adicione itens do cardápio!</p>
+    </div>
+    <div id="cartList"></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">R$ 0,00</span>
+    </div>
+    <div class="cart-subtotal">
+      <span>Taxa de entrega</span>
+      <span style="color:var(--green);font-weight:600;">Grátis</span>
+    </div>
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">R$ 0,00</span>
+    </div>
+    <button class="btn-checkout" id="btnCheckout" onclick="openCheckout()">
+      Finalizar Pedido →
+    </button>
+  </div>
+</div>
+
+<!-- ══ CHECKOUT MODAL ════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="checkoutModal">
+
+    <!-- Form view -->
+    <div id="checkoutForm">
+      <div class="modal-header">
+        <h2>Finalizar Pedido</h2>
+        <button class="modal-close" onclick="closeCheckout()">✕</button>
+      </div>
+      <div class="modal-body">
+
+        <div class="order-summary-mini">
+          <h4>Resumo do Pedido</h4>
+          <div id="summaryItems"></div>
+          <div class="order-mini-total">
+            <span>Total</span>
+            <span id="summaryTotal">R$ 0,00</span>
+          </div>
+        </div>
+
+        <button onclick="closeCheckout(); openCart();" style="
+          width:100%; padding:11px; margin-bottom:24px;
+          background: transparent; border: 1px dashed var(--line);
+          border-radius: var(--radius); color: var(--mid);
+          font-size:13px; font-weight:500; cursor:pointer;
+          transition: border-color 0.2s, color 0.2s;
+          display:flex; align-items:center; justify-content:center; gap:8px;
+        " onmouseover="this.style.borderColor='var(--amber)';this.style.color='var(--amber)'"
+           onmouseout="this.style.borderColor='var(--line)';this.style.color='var(--mid)'">
+          <span style="font-size:16px;">+</span> Adicionar mais itens
+        </button>
+
+        <p class="form-section-title">Dados Pessoais</p>
+        <div class="form-row">
+          <label>Nome completo *</label>
+          <input type="text" id="fName" placeholder="Seu nome" />
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Telefone *</label>
+            <input type="tel" id="fPhone" placeholder="(11) 99999-9999" />
+          </div>
+          <div class="form-row">
+            <label>CPF (opcional)</label>
+            <input type="text" id="fCpf" placeholder="000.000.000-00" />
+          </div>
+        </div>
+
+        <p class="form-section-title">Endereço de Entrega</p>
+        <div class="form-row">
+          <label>Rua / Avenida *</label>
+          <input type="text" id="fStreet" placeholder="Nome da rua" />
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Número *</label>
+            <input type="text" id="fNumber" placeholder="Nº" />
+          </div>
+          <div class="form-row">
+            <label>Complemento</label>
+            <input type="text" id="fComp" placeholder="Apto, bloco..." />
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Bairro *</label>
+            <input type="text" id="fNeighborhood" placeholder="Bairro" />
+          </div>
+          <div class="form-row">
+            <label>CEP *</label>
+            <input type="text" id="fCep" placeholder="00000-000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Ponto de Referência</label>
+          <input type="text" id="fRef" placeholder="Ex: próximo ao mercado" />
+        </div>
+
+        <p class="form-section-title">Forma de Pagamento</p>
+        <div class="payment-opts">
+          <div class="payment-opt">
+            <input type="radio" name="payment" id="pix" value="PIX" checked />
+            <label for="pix"><span>💠</span> PIX</label>
+          </div>
+          <div class="payment-opt">
+            <input type="radio" name="payment" id="card" value="Cartão" />
+            <label for="card"><span>💳</span> Cartão</label>
+          </div>
+          <div class="payment-opt">
+            <input type="radio" name="payment" id="cash" value="Dinheiro" />
+            <label for="cash"><span>💵</span> Dinheiro</label>
+          </div>
+          <div class="payment-opt">
+            <input type="radio" name="payment" id="vr" value="VR/VA" />
+            <label for="vr"><span>🍽️</span> VR / VA</label>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:18px;">
+          <label>Observações</label>
+          <textarea id="fObs" placeholder="Alguma instrução especial? Ex: sem cebola, ponto da carne..."></textarea>
+        </div>
+
+        <button class="btn-confirm" onclick="confirmOrder()">Confirmar Pedido 🍔</button>
+      </div>
+    </div>
+
+    <!-- Success view -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">🎉</div>
+      <h2>Pedido Realizado!</h2>
+      <p>Recebemos seu pedido e já estamos preparando tudo. Em breve o seu delivery chega!</p>
+      <p style="font-size:13px;color:var(--muted);">Tempo estimado: 30–45 minutos</p>
+      <button class="btn-close-success" onclick="closeSuccess()">Voltar ao Menu</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
